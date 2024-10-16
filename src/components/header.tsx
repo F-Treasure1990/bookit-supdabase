@@ -1,6 +1,6 @@
 import Link from "next/link";
 
-import { CircleUser, Menu, Package2, Search } from "lucide-react";
+import { Biohazard, CircleUser, LogOut, Menu } from "lucide-react";
 
 import { ModeToggle } from "@/components/mode-toggle";
 import { Button } from "@/components/ui/button";
@@ -8,16 +8,26 @@ import {
   DropdownMenu,
   DropdownMenuContent,
   DropdownMenuItem,
+  DropdownMenuLabel,
+  DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
 
-const session = false;
+const session = true;
 export async function Header() {
   const menuItems = [
     {
-      label: "Home",
-      href: "/",
+      label: "rooms",
+      href: "/roomms",
+    },
+    {
+      label: "bookings",
+      href: "/bookings",
+    },
+    {
+      label: "add room",
+      href: "/add-room",
     },
   ];
 
@@ -28,14 +38,20 @@ export async function Header() {
           href="#"
           className="flex items-center gap-2 text-lg font-semibold md:text-base"
         >
-          <Package2 className="h-6 w-6" />
+          <Biohazard className="h-6 w-6" />
+
           <span className="sr-only">Acme Inc</span>
         </Link>
+        <div
+          className="bg-border mx-1 hidden h-4 w-[1px] shrink-0 md:inline-flex"
+          data-orientation="vertical"
+          role="none"
+        />
         {menuItems.map((item) => (
           <Link
             key={item.label}
             href={item.href}
-            className="text-muted-foreground transition-colors hover:text-foreground"
+            className="text-muted-foreground capitalize transition-colors hover:text-foreground"
           >
             {item.label}
           </Link>
@@ -55,7 +71,7 @@ export async function Header() {
                 href="#"
                 className="flex items-center gap-2 text-lg font-semibold"
               >
-                <Package2 className="h-6 w-6" />
+                <Biohazard className="h-6 w-6" />
                 <span className="sr-only">Acme Inc</span>
               </Link>
             </div>
@@ -63,7 +79,7 @@ export async function Header() {
               <Link
                 key={item.label}
                 href={item.href}
-                className="text-muted-foreground transition-colors hover:text-foreground"
+                className="text-muted-foreground capitalize transition-colors hover:text-foreground"
               >
                 {item.label}
               </Link>
@@ -75,10 +91,10 @@ export async function Header() {
         <div className="inline-flex items-center">
           <ModeToggle />
           <div
-            className="bg-border mx-3 hidden h-4 w-[1px] shrink-0 md:inline-flex"
+            className="bg-border mx-3 inline-flex h-4 w-[1px] shrink-0"
             data-orientation="vertical"
             role="none"
-          ></div>
+          />
           <AccountMenu />
         </div>
       </div>
@@ -104,10 +120,18 @@ async function AccountMenu() {
         </Button>
       </DropdownMenuTrigger>
       <DropdownMenuContent align="end">
+        <DropdownMenuLabel>My Account</DropdownMenuLabel>
+        <DropdownMenuSeparator />
         <DropdownMenuItem>
-          <form>
-            <button type="submit">Sign out</button>
-          </form>
+          <button type="submit">My Bookings</button>
+        </DropdownMenuItem>
+        <DropdownMenuItem>
+          <button type="submit">Settings</button>
+        </DropdownMenuItem>
+        <DropdownMenuSeparator />
+        <DropdownMenuItem className="cursor-pointer">
+          <LogOut className="mr-2 h-4 w-4" />
+          <span>Log out</span>
         </DropdownMenuItem>
       </DropdownMenuContent>
     </DropdownMenu>
