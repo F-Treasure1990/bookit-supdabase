@@ -17,7 +17,7 @@ export default function Footer() {
               brijr/components is a collection of Next.js, React, Typescript
               components for building landing pages and websites.
             </p>
-            <div className="text-muted-foreground mb-6 flex flex-col gap-4 text-sm underline underline-offset-4 md:mb-0 md:flex-row">
+            <div className="mb-6 flex flex-col gap-4 text-sm text-muted-foreground underline underline-offset-4 md:mb-0 md:flex-row">
               <Link href="#">Privacy Policy</Link>
               <Link href="#">Terms of Service</Link>
               <Link href="#">Cookie Policy</Link>

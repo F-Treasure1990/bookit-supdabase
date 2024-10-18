@@ -32,70 +32,76 @@ export async function Header() {
   ];
 
   return (
-    <header className="sticky top-0 flex h-16 items-center justify-between gap-4 border-b bg-background px-4 md:px-6">
-      <nav className="hidden flex-col gap-6 text-lg font-medium md:flex md:flex-row md:items-center md:gap-5 md:text-sm lg:gap-6">
-        <Link
-          href="#"
-          className="flex items-center gap-2 text-lg font-semibold md:text-base"
-        >
-          <Biohazard className="h-6 w-6" />
-
-          <span className="sr-only">Acme Inc</span>
-        </Link>
-        <div
-          className="bg-border mx-1 hidden h-4 w-[1px] shrink-0 md:inline-flex"
-          data-orientation="vertical"
-          role="none"
-        />
-        {menuItems.map((item) => (
+    <header className="sticky top-0 h-16 border-b bg-background px-4 md:px-6">
+      <div className="mx-auto flex h-full max-w-7xl items-center justify-between">
+        <nav className="hidden flex-col gap-6 text-lg font-medium md:flex md:flex-row md:items-center md:gap-5 md:text-sm lg:gap-6">
           <Link
-            key={item.label}
-            href={item.href}
-            className="text-muted-foreground capitalize transition-colors hover:text-foreground"
+            href="/"
+            className="flex items-center gap-2 text-lg font-semibold md:text-base"
           >
-            {item.label}
+            <Biohazard className="h-6 w-6" />
+
+            <span className="sr-only">Acme Inc</span>
           </Link>
-        ))}
-      </nav>
-      <Sheet>
-        <SheetTrigger asChild>
-          <Button variant="outline" size="icon" className="shrink-0 md:hidden">
-            <Menu className="h-5 w-5" />
-            <span className="sr-only">Toggle navigation menu</span>
-          </Button>
-        </SheetTrigger>
-        <SheetContent side="left">
-          <nav className="grid gap-6 text-lg font-medium">
-            <div className="border-b pb-3">
-              <Link
-                href="#"
-                className="flex items-center gap-2 text-lg font-semibold"
-              >
-                <Biohazard className="h-6 w-6" />
-                <span className="sr-only">Acme Inc</span>
-              </Link>
-            </div>
-            {menuItems.map((item) => (
-              <Link
-                key={item.label}
-                href={item.href}
-                className="text-muted-foreground capitalize transition-colors hover:text-foreground"
-              >
-                {item.label}
-              </Link>
-            ))}
-          </nav>
-        </SheetContent>
-      </Sheet>
-      <div className="flex w-max items-center gap-4 lg:gap-4">
-        <div className="inline-flex items-center">
-          <ModeToggle />
           <div
-            className="bg-border mx-3 inline-flex h-4 w-[1px] shrink-0"
+            className="mx-1 hidden h-4 w-[1px] shrink-0 bg-border md:inline-flex"
             data-orientation="vertical"
             role="none"
           />
-          <AccountMenu />
+          {menuItems.map((item) => (
+            <Link
+              key={item.label}
+              href={item.href}
+              className="capitalize text-muted-foreground transition-colors hover:text-foreground"
+            >
+              {item.label}
+            </Link>
+          ))}
+        </nav>
+        <Sheet>
+          <SheetTrigger asChild>
+            <Button
+              variant="outline"
+              size="icon"
+              className="shrink-0 md:hidden"
+            >
+              <Menu className="h-5 w-5" />
+              <span className="sr-only">Toggle navigation menu</span>
+            </Button>
+          </SheetTrigger>
+          <SheetContent side="left">
+            <nav className="grid gap-6 text-lg font-medium">
+              <div className="border-b pb-3">
+                <Link
+                  href="/"
+                  className="flex items-center gap-2 text-lg font-semibold"
+                >
+                  <Biohazard className="h-6 w-6" />
+                  <span className="sr-only">Acme Inc</span>
+                </Link>
+              </div>
+              {menuItems.map((item) => (
+                <Link
+                  key={item.label}
+                  href={item.href}
+                  className="capitalize text-muted-foreground transition-colors hover:text-foreground"
+                >
+                  {item.label}
+                </Link>
+              ))}
+            </nav>
+          </SheetContent>
+        </Sheet>
+        <div className="flex w-max items-center gap-4 lg:gap-4">
+          <div className="inline-flex items-center">
+            <ModeToggle />
+            <div
+              className="mx-3 inline-flex h-4 w-[1px] shrink-0 bg-border"
+              data-orientation="vertical"
+              role="none"
+            />
+            <AccountMenu />
+          </div>
         </div>
       </div>
     </header>

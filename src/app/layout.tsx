@@ -26,10 +26,12 @@ export default function RootLayout({
           href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>👑</text></svg>"
         />
       </head>
-      <body className={`mx-auto max-w-7xl ${inter.className}`}>
+      <body className={`${inter.className} h-dvh`}>
         <Providers>
           <Header />
-          <main className="px-4 py-6 sm:px-6 lg:px-8">{children}</main>
+          <main className="mx-auto h-screen max-w-7xl px-4 py-6 sm:px-6 lg:px-8">
+            {children}
+          </main>
           <Footer />
         </Providers>
       </body>
