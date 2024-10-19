@@ -1,6 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 
+import { Button } from "@/components/ui/button";
 import {
   Card,
   CardContent,
@@ -9,11 +10,9 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
-import { RoomType } from "@/types";
+import { SelectRoom } from "@/db/schema/rooms";
 
-import { Button } from "./ui/button";
-
-function RoomCard({ room }: { room: RoomType }) {
+function RoomCard({ room }: { room: SelectRoom }) {
   return (
     <Card className="flex flex-col">
       <CardHeader>
@@ -38,7 +37,7 @@ function RoomCard({ room }: { room: RoomType }) {
       </CardContent>
       <CardFooter>
         <Button className="w-full" asChild>
-          <Link href={`/rooms/${room.$id}`}>Book Now</Link>
+          <Link href={`/rooms/${room.id}`}>Book Now</Link>
         </Button>
       </CardFooter>
     </Card>

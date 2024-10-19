@@ -9,7 +9,7 @@ function ThemeProvider({ children, ...props }: ThemeProviderProps) {
   return <NextThemesProvider {...props}>{children}</NextThemesProvider>;
 }
 
-export function Providers({ children }: { children: React.ReactNode }) {
+export function Provider({ children }: { children: React.ReactNode }) {
   return (
     <ThemeProvider
       attribute="class"

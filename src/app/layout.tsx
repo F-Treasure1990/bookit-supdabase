@@ -4,7 +4,8 @@ import { Inter } from "next/font/google";
 import "@/assets/styles/globals.css";
 import Footer from "@/components/footer";
 import Header from "@/components/header";
-import { Providers } from "@/components/providers";
+
+import { Provider } from "./provider";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -27,13 +28,13 @@ export default function RootLayout({
         />
       </head>
       <body className={`${inter.className} h-dvh`}>
-        <Providers>
+        <Provider>
           <Header />
           <main className="mx-auto h-screen max-w-7xl px-4 py-6 sm:px-6 lg:px-8">
             {children}
           </main>
           <Footer />
-        </Providers>
+        </Provider>
       </body>
     </html>
   );

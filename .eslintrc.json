@@ -9,6 +9,10 @@
     "n"
   ],
   "rules": {
+    "array-bracket-spacing": [
+      "error",
+      "always"
+    ],
     "prefer-arrow-callback": [
       "error"
     ],
@@ -38,6 +42,20 @@
       "error",
       {
         "src/**/!^[.*": "KEBAB_CASE"
+      }
+    ],
+    "import/no-restricted-paths": [
+      "error",
+      {
+        "zones": [
+          {
+            "target": "./src/features/rooms",
+            "from": "./src/features",
+            "except": [
+              "./rooms"
+            ]
+          }
+        ]
       }
     ]
   }

@@ -8,6 +8,16 @@ expand(config());
 export const env = createEnv({
   server: {
     NODE_ENV: z.enum(["development", "production"]),
+    DATABASE_URL: z.string(),
+    DATABASE_PASSWORD: z.string(),
+    DATABASE_NAME: z.string(),
+    DATABASE_USER: z.string(),
+    DATABASE_PORT: z.string(),
+    DB_MIGRATING: z
+      .string()
+      .refine((s) => s === "true" || s === "false")
+      .transform((s) => s === "true")
+      .optional(),
   },
   onValidationError: (error: ZodError) => {
     console.error(

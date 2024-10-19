@@ -3,13 +3,13 @@ import Image from "next/image";
 import { LucideIcon, MapPin, PoundSterling, Users } from "lucide-react";
 
 import Heading from "@/components/heading";
-import RoomBookingForm from "@/components/room/room-form.client";
 import { Card, CardContent } from "@/components/ui/card";
-import rooms from "@/db/rooms.json";
+import { getRoomById } from "@/features/rooms/actions";
+import RoomBookingForm from "@/features/rooms/components/room-form.client";
 
-export default function RoomPage({ params }: { params: { id: string } }) {
+export default async function RoomPage({ params }: { params: { id: string } }) {
   const { id } = params;
-  const room = rooms.find((room) => room.$id === id);
+  const [ room ] = await getRoomById(id);
 
   if (!room) {
     return <Heading title="Room not found" />;
